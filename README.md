@@ -11,7 +11,7 @@ dependencies to be installed:
 * Swig (``swig`` package on Ubuntu)
 
 Those requirements need to be installed on the server where the actions will
-be running on and where you run ``packs.install``.
+be running on and where the StackStorm packs are installed.
 
 ## Usage Options
 
