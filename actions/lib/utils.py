@@ -64,5 +64,6 @@ def sanitize_payload(keys_to_sanitize, payload):
     publishing to the logs
     '''
     data = payload.copy()
+    keys_to_sanitize = [k for k in keys_to_sanitize if payload.get(k, None)]
     map(lambda k: data.update({k: "*" * len(payload[k])}), keys_to_sanitize)
     return data
