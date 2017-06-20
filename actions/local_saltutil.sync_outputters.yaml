@@ -22,4 +22,4 @@ parameters:
   kwargs:
     required: false
     type: object
-runner_type: run-python
+runner_type: python-script
