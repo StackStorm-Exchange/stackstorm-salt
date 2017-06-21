@@ -1,6 +1,6 @@
 ---
 name: 'client'
-runner_type: 'run-python'
+runner_type: 'python-script'
 description: 'Run salt LocalClient functions'
 enabled: true
 entry_point: 'client.py'

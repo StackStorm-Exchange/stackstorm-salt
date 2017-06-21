@@ -1,6 +1,6 @@
 ---
 name: 'bootstrap'
-runner_type: 'run-python'
+runner_type: 'python-script'
 description: 'Bootstrap servers with salt.cloud runner'
 enabled: True
 entry_point: 'salt_bootstrap.py'

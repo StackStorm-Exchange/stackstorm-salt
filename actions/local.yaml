@@ -1,6 +1,6 @@
 ---
 name: 'local'
-runner_type: 'run-python'
+runner_type: 'python-script'
 description: 'Run Salt Exection Modules through Salt API'
 enabled: true
 entry_point: 'local.py'

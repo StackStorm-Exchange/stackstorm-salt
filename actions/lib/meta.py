@@ -13,7 +13,7 @@ runner_action_meta = {
             "required": False
         }
     },
-    "runner_type": "run-python",
+    "runner_type": "python-script",
     "description": "Run Salt Runner functions through Salt API",
     "enabled": True,
     "entry_point": "runner.py"}
@@ -31,7 +31,7 @@ local_action_meta = {
             "required": False
         }
     },
-    "runner_type": "run-python",
+    "runner_type": "python-script",
     "description": "Run Salt Runner functions through Salt API",
     "enabled": True,
     "entry_point": "runner.py"}
