@@ -1,5 +1,11 @@
 # Change Log
 
+# 0.7.0
+
+- Set `args=None` for `test.ping` and `test.version`
+- This is so action works with ChatOps and newer ST2 versions that will
+  provide default value even for non-required parameters.
+
 # 0.6.0
 
 - Updated action `runner_type` from `run-python` to `python-script`

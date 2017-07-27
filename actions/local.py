@@ -27,12 +27,25 @@ class SaltLocal(SaltAction):
             st2 run salt.local module=test.ping matches='web*'
             st2 run salt.local module=test.ping expr_form=grain target='os:Ubuntu'
         '''
-        self.generate_package('local',
-                              cmd=module,
-                              target=target,
-                              expr_form=expr_form,
-                              args=args,
-                              data=kwargs)
+
+        # ChatOps alias and newer ST2 versions set default args=[]
+        # This breaks test.ping & test.version
+
+        if module not in ['test.ping', 'test.version']:
+            self.generate_package('local',
+                                  cmd=module,
+                                  target=target,
+                                  expr_form=expr_form,
+                                  args=args,
+                                  data=kwargs)
+        else:
+            self.generate_package('local',
+                                  cmd=module,
+                                  target=target,
+                                  expr_form=expr_form,
+                                  args=None,
+                                  data=kwargs)
+
         request = self.generate_request()
         self.logger.info('[salt] Request generated')
         request.prepare_body(json.dumps(self.data), None)
