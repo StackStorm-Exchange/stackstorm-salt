@@ -13,5 +13,8 @@ class SaltClientAction(Action):
                     kwargs='{"pkgs":["git","httpd"]}'
         '''
         cli = salt.client.LocalClient()
-        ret = cli.cmd(matches, module, arg=args, kwarg=kwargs)
+        if args is None:
+            ret = cli.cmd(matches, module, kwarg=kwargs)
+        else:
+            ret = cli.cmd(matches, module, arg=args, kwarg=kwargs)
         return ret
