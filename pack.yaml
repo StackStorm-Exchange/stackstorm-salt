@@ -1,11 +1,11 @@
 ---
 ref: salt
 name : salt
-description : st2 salt integration pack
+description : salt integration pack
 keywords:
   - salt
   - cfg management
   - configuration management
-version: 0.7.1
+version: 0.7.2
 author : jcockhren
 email : jurnell@sophicware.com
