@@ -2,7 +2,7 @@
 
 from st2common.runners.base_action import Action
 from requests import Request
-from utils import sanitize_payload
+from lib.utils import sanitize_payload
 
 
 class SaltPackage(object):
