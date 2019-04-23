@@ -12,21 +12,21 @@ __all__ = [
 no_args = {
     'module': 'this.something',
     'target': '*',
-    'expr_form': 'glob',
+    'tgt_type': 'glob',
     'args': []
 }
 
 one_arg = {
     'module': 'this.something',
     'target': '*',
-    'expr_form': 'glob',
+    'tgt_type': 'glob',
     'args': ['os'],
 }
 
 multiple_args = {
     'module': 'this.something',
     'target': '*',
-    'expr_form': 'glob',
+    'tgt_type': 'glob',
     'args': ['this', 'that', 'home'],
 }
 
