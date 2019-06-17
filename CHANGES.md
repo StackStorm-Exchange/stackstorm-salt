@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.8.0
+
+- Changed expr_form to tgt_type as SaltStack upstream has replaced the functionality.
+
 ## 0.7.2
 
 - Do not send `args=None` for client actions. This was breaking on modules like `test.ping`.
