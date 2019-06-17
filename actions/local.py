@@ -19,13 +19,13 @@ class SaltLocal(SaltAction):
         'status'
     ]
 
-    def run(self, module, target, expr_form, args, **kwargs):
+    def run(self, module, target, tgt_type, args, **kwargs):
         self.verify_ssl = self.config.get('verify_ssl', True)
         '''
         CLI Examples:
 
             st2 run salt.local module=test.ping matches='web*'
-            st2 run salt.local module=test.ping expr_form=grain target='os:Ubuntu'
+            st2 run salt.local module=test.ping tgt_type=grain target='os:Ubuntu'
         '''
 
         # ChatOps alias and newer ST2 versions set default args=[]
@@ -35,14 +35,14 @@ class SaltLocal(SaltAction):
             self.generate_package('local',
                                   cmd=module,
                                   target=target,
-                                  expr_form=expr_form,
+                                  tgt_type=tgt_type,
                                   args=args,
                                   data=kwargs)
         else:
             self.generate_package('local',
                                   cmd=module,
                                   target=target,
-                                  expr_form=expr_form,
+                                  tgt_type=tgt_type,
                                   args=None,
                                   data=kwargs)
 

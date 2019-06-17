@@ -14,7 +14,7 @@ parameters:
         type: 'string'
         required: false
         default: '*'
-    expr_form:
+    tgt_type:
         description: 'Criteria used for matching minions'
         type: 'string'
         required: false
