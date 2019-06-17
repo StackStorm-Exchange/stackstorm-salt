@@ -51,7 +51,7 @@ class SaltAction(Action):
         self.data['password'] = self.password
         if cmd:
             self.data['fun'] = cmd
-        if client is 'local':
+        if client == 'local':
             self.data['tgt'] = kwargs.get('target', '*')
             self.data['tgt_type'] = kwargs.get('tgt_type', 'glob')
         if isinstance(kwargs.get('args', []), list) and len(kwargs.get('args', [])) > 0:
