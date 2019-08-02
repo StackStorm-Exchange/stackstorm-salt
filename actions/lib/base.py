@@ -58,7 +58,7 @@ class SaltAction(Action):
             self.data['arg'] = kwargs['args']
         if len(kwargs.get('data', {})) > 0:
             if kwargs['data'].get('kwargs', None) is not None:
-                self.data['kwarg'] = kwargs['kwargs']['kwargs']
+                self.data['kwarg'] = kwargs['data']['kwargs']
         clean_payload = sanitize_payload(('username', 'password'), self.data)
         self.logger.info("[salt] Payload to be sent: {0}".format(clean_payload))
 
