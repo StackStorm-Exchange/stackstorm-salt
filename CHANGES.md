@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.8.1
+
+- Fixed a bug in Salt runs due to typo in processing logic for additional parameters #14 (@pengyao)
+
 ## 0.8.0
 
 - Changed expr_form to tgt_type as SaltStack upstream has replaced the functionality.
