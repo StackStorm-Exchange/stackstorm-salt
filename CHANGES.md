@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.8.2
+
+- Fixed `sanitize_payload` function to avoid leaking the type and length of sensitive values #15
+
 ## 0.8.1
 
 - Fixed a bug in Salt runs due to typo in processing logic for additional parameters #14 (@pengyao)
