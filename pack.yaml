@@ -6,6 +6,6 @@ keywords:
   - salt
   - cfg management
   - configuration management
-version: 0.8.1
+version: 0.8.2
 author : jcockhren
 email : jurnell@sophicware.com

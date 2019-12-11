@@ -1,6 +1,5 @@
 # pylint: disable=line-too-long
 
-import six
 import yaml
 from .meta import actions
 
@@ -66,18 +65,12 @@ def sanitize_payload(keys_to_sanitize, payload):
     '''
     data = payload.copy()
 
-    def to_stars(val):
-        if isinstance(val, six.string_types):
-            return '*' * len(val)
-        else:
-            return '*'
-
     for k in keys_to_sanitize:
         val = payload.get(k, None)
         if not val:
             continue
         else:
-            val = to_stars(val)
+            val = '*' * 8
 
         data[k] = val
     return data
