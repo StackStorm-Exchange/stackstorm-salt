@@ -1,6 +1,5 @@
 # pylint: disable=line-too-long
 
-import six
 import yaml
 from .meta import actions
 
