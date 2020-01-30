@@ -9,3 +9,6 @@ keywords:
 version: 0.8.2
 author : jcockhren
 email : jurnell@sophicware.com
+python_versions:
+  - "2"
+  - "3"
