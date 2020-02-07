@@ -6,6 +6,9 @@ keywords:
   - salt
   - cfg management
   - configuration management
-version: 0.8.2
+version: 0.8.3
 author : jcockhren
 email : jurnell@sophicware.com
+python_versions:
+  - "2"
+  - "3"
