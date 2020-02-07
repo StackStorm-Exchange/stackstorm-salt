@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.8.3
+
+- Add explicit support for Python 2 and 3
+
 ## 0.8.2
 
 - Fixed `sanitize_payload` function to avoid leaking the type and length of sensitive values #15
