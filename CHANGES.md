@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.0.0
+
+* Drop Python 2.7 support
+
 ## 0.8.4
 
 - Pin salt < 3001 and jinja2 < 2.11.1 to support both Python 2 and 3
