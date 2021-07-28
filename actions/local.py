@@ -51,4 +51,5 @@ class SaltLocal(SaltAction):
         request.prepare_body(json.dumps(self.data), None)
         self.logger.info('[salt] Preparing to send')
         resp = Session().send(request, verify=self.verify_ssl)
+        self.logger.debug('[salt] Response http code: %s', resp.status_code)
         return resp.json()
