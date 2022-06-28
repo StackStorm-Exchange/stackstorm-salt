@@ -1,4 +1,3 @@
-jinja2<2.11.1  # transitive dependency via salt, last version to support Python 2.7 and 3+
-salt<3001  # last version to support Python 2.7 and 3+
+salt
 salt-pepper
 requests
