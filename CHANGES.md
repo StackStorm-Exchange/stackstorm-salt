@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.0.0
+
+* Drop Python 2.7 support
+
 ## 1.0.1
 
 * Add logging of HTTP Code response from Salt API
