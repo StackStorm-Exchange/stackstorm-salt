@@ -1,8 +1,12 @@
 # Change Log
 
-## 2.0.0
+## 2.0.1
 
 * Drop Python 2.7 support
+
+## 2.0.0
+
+  Not available
 
 ## 1.0.1
 
