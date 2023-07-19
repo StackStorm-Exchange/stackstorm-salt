@@ -1,5 +1,18 @@
 # Change Log
 
+## Unreleased; 3.0.0
+
+### Add
+- Added TLS connection verification.
+- Special handling for test.ping and test.version with empty lists.
+
+### Change
+- Formatted Python code with black.
+- Updated client authentication to work with Salt 3004 to 3006 (maybe higher)
+
+### Removed
+- Removed salt-pepper as a python dependency.
+
 ## 2.0.1
 
 * Drop Python 2.7 support

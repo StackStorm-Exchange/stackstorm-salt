@@ -6,50 +6,41 @@ from lib.base import SaltAction
 
 class SaltLocal(SaltAction):
     __explicit__ = [
-        'cmdmod',
-        'event',
-        'file',
-        'grains',
-        'pillar',
-        'pkg',
-        'saltcloudmod',
-        'schedule',
-        'service',
-        'state',
-        'status'
+        "cmdmod",
+        "event",
+        "file",
+        "grains",
+        "pillar",
+        "pkg",
+        "saltcloudmod",
+        "schedule",
+        "service",
+        "state",
+        "status",
     ]
 
     def run(self, module, target, tgt_type, args, **kwargs):
-        self.verify_ssl = self.config.get('verify_ssl', True)
-        '''
+        """
         CLI Examples:
 
             st2 run salt.local module=test.ping matches='web*'
             st2 run salt.local module=test.ping tgt_type=grain target='os:Ubuntu'
-        '''
+        """
 
-        # ChatOps alias and newer ST2 versions set default args=[]
-        # This breaks test.ping & test.version
+        # ChatOps alias and newer St2 versions set default args=[] which
+        # breaks test.ping & test.version
+        if args == [] and module in ["test.ping", "test.version"]:
+            args = None
 
-        if module not in ['test.ping', 'test.version']:
-            self.generate_package('local',
-                                  cmd=module,
-                                  target=target,
-                                  tgt_type=tgt_type,
-                                  args=args,
-                                  data=kwargs)
-        else:
-            self.generate_package('local',
-                                  cmd=module,
-                                  target=target,
-                                  tgt_type=tgt_type,
-                                  args=None,
-                                  data=kwargs)
+        self.generate_package(
+            "local", cmd=module, target=target, tgt_type=tgt_type, args=args, data=kwargs
+        )
 
         request = self.generate_request()
-        self.logger.info('[salt] Request generated')
         request.prepare_body(json.dumps(self.data), None)
-        self.logger.info('[salt] Preparing to send')
-        resp = Session().send(request, verify=self.verify_ssl)
-        self.logger.debug('[salt] Response http code: %s', resp.status_code)
-        return resp.json()
+        resp = Session().send(request, verify=self.verify_tls)
+        try:
+            retval = resp.json()
+        except Exception as exc:
+            retval = (False, f"Failed to decode json! {str(exc)}")
+        return retval
