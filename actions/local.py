@@ -26,6 +26,7 @@ class SaltLocal(SaltAction):
             st2 run salt.local module=test.ping matches='web*'
             st2 run salt.local module=test.ping tgt_type=grain target='os:Ubuntu'
         """
+        self.verify_tls = self.config.get("verify_ssl", True)
 
         # ChatOps alias and newer St2 versions set default args=[] which
         # breaks test.ping & test.version
@@ -39,8 +40,11 @@ class SaltLocal(SaltAction):
         request = self.generate_request()
         request.prepare_body(json.dumps(self.data), None)
         resp = Session().send(request, verify=self.verify_tls)
-        try:
-            retval = resp.json()
-        except Exception as exc:
-            retval = (False, f"Failed to decode json! {str(exc)}")
-        return retval
+
+        if resp.ok:
+            try:
+                return resp.json()
+            except ValueError as exc:
+                return resp.text
+        else:
+            return (False, f"HTTP error {resp.status_code}\n{resp.text}")
