@@ -15,11 +15,11 @@ be running on and where the StackStorm packs are installed.
 
 ## Usage Options
 
-### Scenario 1: ST2 Installed on a Salt Master
+### Scenario 1: StackStorm Installed on a Salt Master
 
 #### Configuration
 
-If ST2 is installed on the master, no local configuration is required.
+If StackStorm is installed on the master, no local configuration is required.
 
 #### Examples
 
@@ -30,7 +30,7 @@ If ST2 is installed on the master, no local configuration is required.
     st2 run salt.bootstrap instance_id=<uuid> provider=my-nova name=web.example.com
 ```
 
-### Scenario 2: ST2 Using Salt NetAPI
+### Scenario 2: StackStorm using Salt NetAPI
 
 #### Configuration
 
@@ -47,7 +47,7 @@ password: clams
 ```
 
 **Note** : When modifying the configuration in `/opt/stackstorm/configs/` please
-           remember to tell StackStorm to load these new values by running
+           remember reload StackStorm to load these new values with the command:
            `st2ctl reload --register-configs`
 
 #### Examples
@@ -68,9 +68,9 @@ One can also use the generic "runner" action to execute arbitrary runners and ex
 
 ### Actions
 
-Saltstack runner/execution module function calls are represented as Stackstorm actions. Considering Saltstack's [`archive` execution module](http://docs.saltstack.com/en/2014.7/ref/modules/all/salt.modules.archive.html#module-salt.modules.archive), every function would be exposed as an Stackstorm action.
+Saltstack runner/execution module function calls are represented as StackStorm actions. Considering Saltstack's [`archive` execution module](http://docs.saltstack.com/en/2014.7/ref/modules/all/salt.modules.archive.html#module-salt.modules.archive), every function would be exposed as an StackStorm action.
 
-Stackstorm actions for this pack are namespaced relative to their Saltstack NetAPI client name and module name. Thus having the form:
+StackStorm actions for this pack are namespaced relative to their Saltstack NetAPI client name and module name. Thus having the form:
 
 `[NetAPI client name]_[module name].[function name]`
 

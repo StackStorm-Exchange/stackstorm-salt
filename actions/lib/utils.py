@@ -6,63 +6,48 @@ from .meta import actions
 runner_action_meta = {
     "name": "",
     "parameters": {
-        "action": {
-            "type": "string",
-            "immutable": True,
-            "default": ""
-        },
-        "kwargs": {
-            "type": "object",
-            "required": False
-        }
+        "action": {"type": "string", "immutable": True, "default": ""},
+        "kwargs": {"type": "object", "required": False},
     },
     "runner_type": "python-script",
     "description": "Run Salt Runner functions through Salt API",
     "enabled": True,
-    "entry_point": "runner.py"}
+    "entry_point": "runner.py",
+}
 
 local_action_meta = {
     "name": "",
     "parameters": {
-        "action": {
-            "type": "string",
-            "immutable": True,
-            "default": ""
-        },
-        "args": {
-            "type": "array",
-            "required": False
-        },
-        "kwargs": {
-            "type": "object",
-            "required": False
-        }
+        "action": {"type": "string", "immutable": True, "default": ""},
+        "args": {"type": "array", "required": False},
+        "kwargs": {"type": "object", "required": False},
     },
     "runner_type": "python-script",
     "description": "Run Salt Execution modules through Salt API",
     "enabled": True,
-    "entry_point": "local.py"}
+    "entry_point": "local.py",
+}
 
 
 def generate_actions():
     def create_file(mt, m, a):
         manifest = local_action_meta
-        manifest['name'] = "{0}_{1}.{2}".format(mt, m, a)
-        manifest['parameters']['action']['default'] = "{0}.{1}".format(m, a)
+        manifest["name"] = f"{mt}_{m}.{a}"
+        manifest["parameters"]["action"]["default"] = f"{m}.{a}"
 
-        fh = open('{0}_{1}.{2}.yaml'.format(mt, m, a), 'w')
-        fh.write('---\n')
+        fh = open(f"{mt}_{m}.{a}.yaml", "w")
+        fh.write("---\n")
         fh.write(yaml.dump(manifest, default_flow_style=False))
         fh.close()
+
     for key in actions:
-        map(lambda l: create_file('local', key, l), actions[key])
+        map(lambda l: create_file("local", key, l), actions[key])
 
 
 def sanitize_payload(keys_to_sanitize, payload):
-    '''
-    Removes sensitive data from payloads before
-    publishing to the logs
-    '''
+    """
+    Removes sensitive data from payloads before publishing to the logs
+    """
     data = payload.copy()
 
     for k in keys_to_sanitize:
@@ -70,7 +55,7 @@ def sanitize_payload(keys_to_sanitize, payload):
         if not val:
             continue
         else:
-            val = '*' * 8
+            val = "*" * 8
 
         data[k] = val
     return data
