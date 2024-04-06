@@ -34,7 +34,15 @@ class SaltLocalActionTestCase(testtools.TestCase, BaseActionTestCase):
         super(SaltLocalActionTestCase, self).setUp()
         self.m = self.useFixture(fixture.Fixture())
         self.action = self.get_action_instance(config=CONFIG_DATA)
-        self.m.register_uri("POST", "{}/run".format(CONFIG_DATA["api_url"]), json={})
+        # Mock authentication
+        self.m.register_uri(
+            "POST",
+            "{}/login".format(CONFIG_DATA["api_url"]),
+            json={},
+            headers={"X-Auth-Token": "mock-auth-ok-token"},
+        )
+        # Mock run API
+        self.m.register_uri("POST", "{}/".format(CONFIG_DATA["api_url"]), json={})
 
     def test_generic_action_no_args(self):
         self.action.run(**no_args)
