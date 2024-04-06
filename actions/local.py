@@ -20,11 +20,9 @@ class SaltLocal(SaltAction):
     ]
 
     def run(self, module, target, tgt_type, args, **kwargs):
-        """
-        CLI Examples:
-
-            st2 run salt.local module=test.ping matches='web*'
-            st2 run salt.local module=test.ping tgt_type=grain target='os:Ubuntu'
+        """CLI Examples:
+        st2 run salt.local module=test.ping matches='web*'
+        st2 run salt.local module=test.ping tgt_type=grain target='os:Ubuntu'
         """
         self.verify_tls = self.config.get("verify_ssl", True)
 
@@ -44,7 +42,7 @@ class SaltLocal(SaltAction):
         if resp.ok:
             try:
                 return resp.json()
-            except ValueError as exc:
+            except ValueError:
                 return resp.text
         else:
             return (False, f"HTTP error {resp.status_code}\n{resp.text}")

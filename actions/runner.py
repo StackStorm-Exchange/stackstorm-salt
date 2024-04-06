@@ -8,11 +8,9 @@ class SaltRunner(SaltAction):
     __explicit__ = ["jobs", "manage", "pillar", "mine", "network"]
 
     def run(self, module, **kwargs):
-        """
-        CLI Examples:
-
-            st2 run salt.runner_jobs.active
-            st2 run salt.runner_jobs.list_jobs
+        """CLI Examples:
+        st2 run salt.runner_jobs.active
+        st2 run salt.runner_jobs.list_jobs
         """
         self.verify_tls = self.config.get("verify_ssl", True)
 
@@ -30,7 +28,7 @@ class SaltRunner(SaltAction):
         if resp.ok:
             try:
                 return resp.json()
-            except ValueError as exc:
+            except ValueError:
                 return resp.text
         else:
             return (False, f"HTTP error {resp.status_code}\n{resp.text}")

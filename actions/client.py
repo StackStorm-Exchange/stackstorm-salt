@@ -5,9 +5,7 @@ from st2common.runners.base_action import Action
 
 class SaltClientAction(Action):
     def run(self, matches, module, args=[], kwargs={}):
-        """
-        CLI Examples:
-
+        """CLI Examples:
             st2 run salt.client matches='web*' module=test.ping
             st2 run salt.client module=pkg.install \
                     kwargs='{"pkgs":["git","httpd"]}'
