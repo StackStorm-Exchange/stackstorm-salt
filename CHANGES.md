@@ -1,6 +1,12 @@
 # Change Log
 
-## Unreleased; 3.0.0
+## Unreleased; 3.0.2
+
+### Add
+### Change
+### Removed
+
+## 3.0.1
 
 ### Add
 - Added TLS connection verification.
@@ -9,9 +15,15 @@
 ### Change
 - Formatted Python code with black.
 - Updated client authentication to work with Salt 3004 to 3006 (maybe higher)
+- Improved error reporting when HTTP errors are encountered.
+- Fail actions when HTTP return codes >=400
 
 ### Removed
 - Removed salt-pepper as a python dependency.
+
+## 3.0.0
+
+Retracted.
 
 ## 2.0.1
 
