@@ -66,6 +66,11 @@ One can also use the generic "runner" action to execute arbitrary runners and ex
     st2 run salt.local module=pillar.items args=thing1,thing2
 ```
 
+Wheel command allows manipulation of keys on the master and requires careful crafting of the runner call.
+```bash
+    st2 run salt.runner module=wheel kwargs='{"client": "wheel", "fun": "key.finger", "match": "*"}'
+```
+
 ### Actions
 
 Saltstack runner/execution module function calls are represented as StackStorm actions. Considering Saltstack's [`archive` execution module](http://docs.saltstack.com/en/2014.7/ref/modules/all/salt.modules.archive.html#module-salt.modules.archive), every function would be exposed as an StackStorm action.

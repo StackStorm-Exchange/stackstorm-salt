@@ -1,2 +1,4 @@
-salt
+salt>=3006,<3007
+# dependency of salt 3006
+pyzmq==25.0.2
 requests
